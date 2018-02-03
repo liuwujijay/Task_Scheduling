@@ -9,6 +9,17 @@ public class Node {
     int memory_size;
     int storage_capacity;
 
+    public Node(double upstream_bw, double downstream_bw, int num_of_CPU_cores, int cPU_speed, int memory_size,
+                int storage_capacity) {
+        super();
+        this.upstream_bw = upstream_bw;
+        this.downstream_bw = downstream_bw;
+        this.num_of_CPU_cores = num_of_CPU_cores;
+        this.CPU_speed = cPU_speed;
+        this.memory_size = memory_size;
+        this.storage_capacity = storage_capacity;
+    }
+
     public void setUpstream_bw(double upstream_bw) {
         this.upstream_bw = upstream_bw;
     }
