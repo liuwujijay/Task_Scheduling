@@ -6,30 +6,30 @@ import java.util.Random;
 
 public class Workflow {
 
-    /*public String[][] workload_N_datasize_function(int[][] dependencies) {
-        // Customizable Parameters, check the data size changing function
-        int num_of_possible_forms = 5;
-        String[] possible_form = new String[num_of_possible_forms];
-        possible_form[0] = "n";
-        possible_form[1] = "n^2";
-        possible_form[2] = "logn";
-        possible_form[3] = "n^3";
-        possible_form[4] = "nlogn";
-
-        int num_of_modules = dependencies.length;
-        System.out.println("dependency length: " + dependencies.length);
-        String[][] workload_functions = new String[num_of_modules][num_of_modules];
-        Random random = new Random();
-        for (int i = 0; i < num_of_modules; i++) {
-            for (int j = 0; j < num_of_modules; j++) {
-                if (dependencies[i][j] != 0) {
-                    int temp = random.nextInt(num_of_possible_forms);
-                    workload_functions[j][i] = possible_form[temp];
-                }
-            }
-        }
-        return workload_functions;
-    }*/
+//    public String[][] workload_N_datasize_function(int[][] dependencies) {
+//        // Customizable Parameters, check the data size changing function
+//        int num_of_possible_forms = 5;
+//        String[] possible_form = new String[num_of_possible_forms];
+//        possible_form[0] = "n";
+//        possible_form[1] = "n^2";
+//        possible_form[2] = "logn";
+//        possible_form[3] = "n^3";
+//        possible_form[4] = "nlogn";
+//
+//        int num_of_modules = dependencies.length;
+//        System.out.println("dependency length: " + dependencies.length);
+//        String[][] workload_functions = new String[num_of_modules][num_of_modules];
+//        Random random = new Random();
+//        for (int i = 0; i < num_of_modules; i++) {
+//            for (int j = 0; j < num_of_modules; j++) {
+//                if (dependencies[i][j] != 0) {
+//                    int temp = random.nextInt(num_of_possible_forms);
+//                    workload_functions[j][i] = possible_form[temp];
+//                }
+//            }
+//        }
+//        return workload_functions;
+//    }
 
     public enum Workload{
 

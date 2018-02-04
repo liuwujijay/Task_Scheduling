@@ -1,13 +1,20 @@
 package com.workflow;
 
+import com.sun.tools.corba.se.idl.InterfaceGen;
+
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class Job {
 
+
+
     private int mapWorkload;
-    private int mapDatasize;
+    private double mapDatasize;
     private int reduceWorkload;
-    private int reduceDatasize;
+    private double reduceDatasize;
+
 
     public int getMapWorkload() {
         return mapWorkload;
@@ -72,7 +79,8 @@ public class Job {
         int number = precursorNum[jobID];
         ArrayList mapWorkloadResult = new ArrayList();
         for(int i = 0; i < number; i++){
-            mapWorkloadResult.add(Workflow.Workload.getName(i + 1));
+            Random temp = new Random();
+            mapWorkloadResult.add(Workflow.Workload.getName(temp.nextInt()%5 + 1));
             //MapWorkload += Workflow.Workload.getName(i + 1);
         }
         return mapWorkloadResult;
@@ -82,7 +90,8 @@ public class Job {
         int number = precursorNum[jobID];
         ArrayList<String> reduceWorkloadResult = new ArrayList<>();
         for(int i = 0; i < number; i++){
-            reduceWorkloadResult.add(Workflow.Workload.getName(i + 1));
+            Random temp = new Random();
+            reduceWorkloadResult.add(Workflow.Workload.getName( temp.nextInt()%5 + 1));
             //MapWorkload += Workflow.Workload.getName(i + 1);
         }
         return reduceWorkloadResult;
@@ -92,9 +101,11 @@ public class Job {
         //TODO call function in Utils to get random number in a certain range
         //int mapDatasize = 0;
         int number = precursorNum[jobID];
-        ArrayList<String> mapDatasizeResult = new ArrayList<>();
+        ArrayList<double> mapDatasizeResult = new ArrayList<>();
         for(int i = 0; i < number; i++){
-            mapDatasizeResult.add(Workflow.Workload.getName(i + 1));
+            Random temp = new Random();
+            mapDatasizeResult.add(temp.nextFloat()+0.5);
+//            mapDatasizeResult.add(Workflow.Workload.getName(temp.nextInt()%5 + 1));
         }
         return mapDatasizeResult;
     }
@@ -103,9 +114,11 @@ public class Job {
         //int mapDatasize = 0;
         //TODO call function in Utils to get random number in a certain range
         int number = precursorNum[jobID];
-        ArrayList<String> reduceDatasizeResult = new ArrayList<>();
+        ArrayList<double> reduceDatasizeResult = new ArrayList<>();
         for(int i = 0; i < number; i++){
-            reduceDatasizeResult.add(Workflow.Workload.getName(i + 1));
+            Random temp = new Random();
+            reduceDatasizeResult.add(temp.nextFloat()+0.5);
+//            reduceDatasizeResult.add(Workflow.Workload.getName(i + 1));
         }
         return reduceDatasizeResult;
     }

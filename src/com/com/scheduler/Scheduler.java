@@ -3,10 +3,13 @@ package com.com.scheduler;
 public class Scheduler {
 
     public Scheduling_Scheme BWS_SA() {
-        Scheduling_Scheme scheduling_scheme = new Scheduling_Scheme();
-
+        Scheduling_Scheme init_scheme = new Scheduling_Scheme();
+        Scheduler sc = new Scheduler();
 
         init_scheme = sc.calculate_init_mapping();
+
+
+
         Components_cost components_cost = sc.calculate_communication_execution_cost(init_scheme);
         Critical_path critical_path_new = new Critical_path();
         critical_path_new.critical_modules = critical_path_new.calculate_critical_path(components_cost.link_delay, components_cost.exe_time);
