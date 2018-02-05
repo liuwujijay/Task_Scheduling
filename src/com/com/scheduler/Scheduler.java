@@ -8,6 +8,7 @@ public class Scheduler {
 
         init_scheme = sc.calculate_init_mapping();
 
+        for
 
 
         Components_cost components_cost = sc.calculate_communication_execution_cost(init_scheme);

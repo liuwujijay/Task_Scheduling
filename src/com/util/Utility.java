@@ -1,6 +1,8 @@
 package com.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Utility {
@@ -76,7 +78,7 @@ public class Utility {
      * @param num_of_racks
      * @return
      */
-    private int[][] generate_inter_rack_bw(int num_of_racks) {
+    public static int[][] generate_inter_rack_bw(int num_of_racks) {
         // TODO Customizable Parameters.. Some of them are unrealistic
         int min_bw = 200;
         int max_bw = 400;
@@ -84,14 +86,58 @@ public class Utility {
         int[][] inter_rack_bw = new int[num_of_racks][num_of_racks];
         Random random = new Random();
         for (int i = 0; i < num_of_racks; i++) {
-            for (int j = 0; j <= i; j++) {
-                inter_rack_bw[i][j] = random.nextInt(max_bw - min_bw) + min_bw;
-                inter_rack_bw[j][i] = inter_rack_bw[i][j];
+            for (int j = 0; j < num_of_racks; j++) {
+                if(i==j){
+                    inter_rack_bw[i][j] = 0;
+                }else if(inter_rack_bw[i][j] == 0){
+                    inter_rack_bw[i][j] = random.nextInt(max_bw - min_bw) + min_bw;
+                    inter_rack_bw[j][i] = inter_rack_bw[i][j];
+                }
             }
         }
-
         return inter_rack_bw;
     }
+    public static double calculate_datasize(double data_size, String function_form) {
+        double workload = 0d;
+        if (function_form == "n")
+            return data_size;
+        if (function_form == "n^2")
+            return Math.pow(data_size, 2);
+        if (function_form == "n^3")
+            return Math.pow(data_size, 3);
+        if (function_form == "logn")
+            return Math.log(data_size);
+        if (function_form == "nlogn")
+            return Math.log(data_size) * data_size;
+        return workload;
+    }
+    public static List<Integer> calPrecursor(int[][] dependencies, int col) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < dependencies.length; i++) {
+            if (dependencies[i][col] != 0) {
+                res.add(i);
+            }
+        }
+        return res;
+    }
+
+
+
+    public static double calculate_workload(double data_size, String function_form) {
+        double workload = 0d;
+        if (function_form == "n")
+            return data_size;
+        if (function_form == "n^2")
+            return Math.pow(data_size, 2);
+        if (function_form == "n^3")
+            return Math.pow(data_size, 3);
+        if (function_form == "logn")
+            return Math.log(data_size);
+        if (function_form == "nlogn")
+            return Math.log(data_size) * data_size;
+        return workload;
+    }
+
     @Override
     public String toString() {
         return "Utility [node_info=" + Arrays.toString(node_info) + ", inter_rack_bw=" + Arrays.toString(inter_rack_bw)

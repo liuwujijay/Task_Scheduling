@@ -1,7 +1,15 @@
 package com.cluster;
 
+import java.util.HashMap;
+
 public class Node {
 
+    // node id
+    // rackNum;
+    // status
+    int nodeId;
+    int rackNum;
+    HashMap<String, Integer> status;
     double upstream_bw;
     double downstream_bw;
     int num_of_CPU_cores;
@@ -10,7 +18,7 @@ public class Node {
     int storage_capacity;
 
     public Node(double upstream_bw, double downstream_bw, int num_of_CPU_cores, int cPU_speed, int memory_size,
-                int storage_capacity) {
+                int storage_capacity,int nodeId) {
         super();
         this.upstream_bw = upstream_bw;
         this.downstream_bw = downstream_bw;
@@ -18,6 +26,17 @@ public class Node {
         this.CPU_speed = cPU_speed;
         this.memory_size = memory_size;
         this.storage_capacity = storage_capacity;
+        this.status = initialStatus();
+        this.nodeId = nodeId;
+    }
+
+    private HashMap<String, Integer> initialStatus() {
+        HashMap<String, Integer> status = new HashMap<>();
+        status.put("MEMORY", 0);
+        status.put("STORAGE", 0);
+        status.put("UTASK", 0);
+        status.put("DTASK", 0);
+        return status;
     }
 
     public void setUpstream_bw(double upstream_bw) {
@@ -69,4 +88,3 @@ public class Node {
     }
 
 }
-
